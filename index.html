@@ -142,7 +142,7 @@
 
                 <!-- Coluna Central: Notícias -->
                 <div id="news-column" class="col-span-12 md:col-span-9 lg:col-span-7">
-                    <!-- Botão Nova Notícia (para TH/Admin) -->
+                    <!-- Botão Nova Notícia (para RH/Admin) -->
                     <div id="new-post-container" class="hidden mb-6">
                         <button id="new-post-button" class="w-full bg-green-500 text-white p-3 rounded-lg shadow-md hover:bg-green-600 transition flex items-center justify-center font-bold">
                             <i data-lucide="plus-circle" class="w-6 h-6 mr-2"></i>
@@ -305,23 +305,23 @@
                 <button class="close-modal-button p-1 rounded-full hover:bg-gray-200"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
             
-            <!-- Gerenciar Usuários TH -->
+            <!-- Gerenciar Usuários RH -->
             <div>
-                <h3 class="text-xl font-semibold mb-4">Gerenciar Usuários de TH</h3>
-                <form id="add-TH-user-form" class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end mb-4 p-4 bg-gray-50 rounded-lg border">
+                <h3 class="text-xl font-semibold mb-4">Gerenciar Usuários de RH</h3>
+                <form id="add-rh-user-form" class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end mb-4 p-4 bg-gray-50 rounded-lg border">
                     <div class="col-span-1">
-                        <label for="TH-username" class="block text-sm font-medium text-gray-700">Usuário</label>
-                        <input type="text" id="TH-username" placeholder="usuario.TH" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                        <label for="rh-username" class="block text-sm font-medium text-gray-700">Usuário</label>
+                        <input type="text" id="rh-username" placeholder="usuario.rh" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
                     </div>
                      <div class="col-span-1">
-                        <label for="TH-password" class="block text-sm font-medium text-gray-700">Senha</label>
-                        <input type="password" id="TH-password" placeholder="Senha" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                        <label for="rh-password" class="block text-sm font-medium text-gray-700">Senha</label>
+                        <input type="password" id="rh-password" placeholder="Senha" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
                     </div>
-                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-700 transition h-10 w-full md:col-span-1">Adicionar Usuário TH</button>
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-700 transition h-10 w-full md:col-span-1">Adicionar Usuário RH</button>
                 </form>
                 <p id="admin-error" class="text-red-500 text-sm my-2 h-4"></p>
-                <div id="TH-users-list" class="space-y-2">
-                    <!-- Lista de usuários de TH será inserida aqui -->
+                <div id="rh-users-list" class="space-y-2">
+                    <!-- Lista de usuários de RH será inserida aqui -->
                 </div>
             </div>
         </div>
@@ -343,17 +343,17 @@
         // --- VARIÁVEIS DE ESTADO GLOBAL E DADOS LOCAIS PARA A PRÉVIA ---
         const state = {
             user: null, 
-            role: 'guest', // 'guest', 'TH', 'admin'
+            role: 'guest', // 'guest', 'rh', 'admin'
             username: '',
             allNews: [
                 { id: '1', title: 'Nova Política de Home Office Híbrido', content: '<h3>Detalhes da Nova Política</h3><p>A partir de 1º de Agosto, a Neoortho adotará um modelo de trabalho híbrido. Todos os colaboradores deverão comparecer ao escritório <strong>3 vezes por semana</strong>. Os dias podem ser flexíveis e combinados diretamente com seu gestor. Esta medida visa unir o melhor dos dois mundos: a flexibilidade do trabalho remoto com a colaboração e integração do ambiente presencial.</p>', imageUrl: 'https://placehold.co/800x400/3B82F6/FFFFFF?text=Trabalho+Hibrido', imageText: 'Trabalho Hibrido', imageBg: '#3B82F6', imageFg: '#FFFFFF', pinned: true, authorUsername: 'admin', createdAt: { seconds: 1752600000 } }, 
                 { id: '2', title: 'Resultados do Segundo Trimestre Superam Expectativas', content: '<p>A diretoria da Neoortho tem o prazer de anunciar que os resultados financeiros do segundo trimestre de 2025 superaram todas as metas estabelecidas. Gostaríamos de parabenizar a todos pelo empenho e dedicação. Um relatório completo será apresentado na Reunião Geral do dia 10/08.</p>', imageUrl: 'https://placehold.co/800x400/10B981/FFFFFF?text=Resultados', imageText: 'Resultados', imageBg: '#10B981', imageFg: '#FFFFFF', pinned: false, authorUsername: 'admin', createdAt: { seconds: 1752500000 } }, 
-                { id: '3', title: 'Inscrições Abertas para o Programa de Mentoria Interna', content: '<p>Está buscando desenvolvimento de carreira? O Programa de Mentoria Interna está com inscrições abertas! Conecte-se com líderes experientes da Neoortho e acelere seu crescimento profissional. As vagas são limitadas. Inscreva-se pelo portal de carreiras até o dia 30/07.</p>', imageUrl: 'https://placehold.co/800x400/F59E0B/FFFFFF?text=Mentoria', imageText: 'Mentoria', imageBg: '#F59E0B', imageFg: '#FFFFFF', pinned: false, authorUsername: 'TH', createdAt: { seconds: 1752400000 } }, 
+                { id: '3', title: 'Inscrições Abertas para o Programa de Mentoria Interna', content: '<p>Está buscando desenvolvimento de carreira? O Programa de Mentoria Interna está com inscrições abertas! Conecte-se com líderes experientes da Neoortho e acelere seu crescimento profissional. As vagas são limitadas. Inscreva-se pelo portal de carreiras até o dia 30/07.</p>', imageUrl: 'https://placehold.co/800x400/F59E0B/FFFFFF?text=Mentoria', imageText: 'Mentoria', imageBg: '#F59E0B', imageFg: '#FFFFFF', pinned: false, authorUsername: 'rh', createdAt: { seconds: 1752400000 } }, 
             ],
-            allTHUsers: [],
+            allRhUsers: [],
         };
 
-        const colaboradores = [ { nome: 'Ana Silva', aniversario: '7-16', cargo: 'Analista de TH', foto: 'https://placehold.co/100x100/E2E8F0/4A5568?text=AS' }, { nome: 'Bruno Costa', aniversario: '8-22', cargo: 'Desenvolvedor Front-end', foto: 'https://placehold.co/100x100/E2E8F0/4A5568?text=BC' }, { nome: 'Carlos Pereira', aniversario: '7-15', cargo: 'Gerente de Projetos', foto: 'https://placehold.co/100x100/E2E8F0/4A5568?text=CP' }, { nome: 'Juliana Martins', aniversario: '7-16', cargo: 'Especialista de Marketing', foto: 'https://placehold.co/100x100/E2E8F0/4A5568?text=JM' }, { nome: 'Ricardo Souza', aniversario: '9-5', cargo: 'Designer UX/UI', foto: 'https://placehold.co/100x100/E2E8F0/4A5568?text=RS' } ];
+        const colaboradores = [ { nome: 'Ana Silva', aniversario: '7-16', cargo: 'Analista de RH', foto: 'https://placehold.co/100x100/E2E8F0/4A5568?text=AS' }, { nome: 'Bruno Costa', aniversario: '8-22', cargo: 'Desenvolvedor Front-end', foto: 'https://placehold.co/100x100/E2E8F0/4A5568?text=BC' }, { nome: 'Carlos Pereira', aniversario: '7-15', cargo: 'Gerente de Projetos', foto: 'https://placehold.co/100x100/E2E8F0/4A5568?text=CP' }, { nome: 'Juliana Martins', aniversario: '7-16', cargo: 'Especialista de Marketing', foto: 'https://placehold.co/100x100/E2E8F0/4A5568?text=JM' }, { nome: 'Ricardo Souza', aniversario: '9-5', cargo: 'Designer UX/UI', foto: 'https://placehold.co/100x100/E2E8F0/4A5568?text=RS' } ];
         const eventos = [ { data: '25/07', nome: 'Treinamento de Segurança' }, { data: '05/08', nome: 'Início da Campanha de Vacinação' }, { data: '10/08', nome: 'Reunião Geral Trimestral' }, { data: '12/12', nome: 'Festa de Fim de Ano' } ];
 
         // --- LÓGICA DE AUTENTICAÇÃO E ESTADO (SIMULADA) ---
@@ -383,7 +383,7 @@
                 userInfo.style.display = 'flex';
                 userDisplayName.textContent = state.username;
                 
-                newPostContainer.classList.toggle('hidden', state.role !== 'TH' && state.role !== 'admin');
+                newPostContainer.classList.toggle('hidden', state.role !== 'rh' && state.role !== 'admin');
                 adminPanelButton.classList.toggle('hidden', state.role !== 'admin');
             } else {
                 loginButton.style.display = 'block';
@@ -407,8 +407,8 @@
             const pinnedNews = sortedNews.filter(n => n.pinned);
             const regularNews = sortedNews.filter(n => !n.pinned);
             
-            pinnedContainer.inneTHTML = pinnedNews.length > 0 ? pinnedNews.map(news => createNewsCard(news, true)).join('') : '';
-            feedContainer.inneTHTML = regularNews.length > 0 ? regularNews.map(news => createNewsCard(news, false)).join('') : `<p class="text-center text-gray-500 p-8">Nenhuma notícia publicada ainda.</p>`;
+            pinnedContainer.innerHTML = pinnedNews.length > 0 ? pinnedNews.map(news => createNewsCard(news, true)).join('') : '';
+            feedContainer.innerHTML = regularNews.length > 0 ? regularNews.map(news => createNewsCard(news, false)).join('') : `<p class="text-center text-gray-500 p-8">Nenhuma notícia publicada ainda.</p>`;
             lucide.createIcons();
         }
 
@@ -429,7 +429,7 @@
                         <div class="text-gray-700 mb-4 news-content-snippet">${contentSnippet}</div>
                         <div class="flex justify-between items-center">
                             <button data-action="read-more" data-id="${news.id}" class="text-blue-600 font-semibold hover:underline">Ler mais</button>
-                            ${state.role === 'TH' || state.role === 'admin' ? `
+                            ${state.role === 'rh' || state.role === 'admin' ? `
                             <div class="space-x-2">
                                 <button data-action="edit" data-id="${news.id}" class="p-2 rounded-full hover:bg-gray-200"><i data-lucide="edit" class="w-5 h-5 text-gray-600"></i></button>
                                 <button data-action="delete" data-id="${news.id}" class="p-2 rounded-full hover:bg-gray-200"><i data-lucide="trash-2" class="w-5 h-5 text-red-500"></i></button>
@@ -441,16 +441,16 @@
             `;
         }
         
-        function renderTHUsers(usersList) {
-            const listEl = document.getElementById('TH-users-list');
+        function renderRhUsers(usersList) {
+            const listEl = document.getElementById('rh-users-list');
             if(!listEl) return;
-            listEl.inneTHTML = usersList.length === 0 ? '<p class="text-gray-500 text-center p-4">Nenhum usuário de TH cadastrado.</p>' : usersList.map(user => `
+            listEl.innerHTML = usersList.length === 0 ? '<p class="text-gray-500 text-center p-4">Nenhum usuário de RH cadastrado.</p>' : usersList.map(user => `
                 <div class="flex items-center justify-between p-3 bg-white rounded-md border">
                     <div>
                         <p class="font-medium">${user.username}</p>
                         <p class="text-sm text-gray-500">${user.email}</p>
                     </div>
-                    <button data-action="delete-TH-user" data-id="${user.id}" class="p-2 rounded-full hover:bg-red-100">
+                    <button data-action="delete-rh-user" data-id="${user.id}" class="p-2 rounded-full hover:bg-red-100">
                         <i data-lucide="trash-2" class="w-5 h-5 text-red-500"></i>
                     </button>
                 </div>
@@ -458,10 +458,10 @@
             lucide.createIcons();
         }
 
-        function renderPaymentCalendar() { const paymentCalendarEl = document.getElementById('payment-calendar'); const hoje = new Date(); const ano = hoje.getFullYear(); const mes = hoje.getMonth(); let dataAdiantamento = new Date(ano, mes, 15); let dataPagamento = new Date(ano, mes, 30); paymentCalendarEl.inneTHTML = ` <div class="p-3 bg-blue-50 rounded-lg"> <p class="font-semibold text-blue-800">Adiantamento (${hoje.toLocaleString('pt-BR', { month: 'long' })})</p> <p class="text-sm text-blue-600">${dataAdiantamento.toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit'})} (${dataAdiantamento.toLocaleDateString('pt-BR', {weekday: 'short'})})</p> </div> <div class="p-3 bg-green-50 rounded-lg"> <p class="font-semibold text-green-800">Pagamento Mensal</p> <p class="text-sm text-green-600">${dataPagamento.toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit'})} (${dataPagamento.toLocaleDateString('pt-BR', {weekday: 'short'})})</p> </div> `; }
-        function renderBirthdayWidget() { const widgetEl = document.getElementById('birthday-widget'); const hoje = new Date(); const hojeStr = `${hoje.getMonth() + 1}-${hoje.getDate()}`; const aniversariantes = colaboradores.filter(c => c.aniversario === hojeStr); if (aniversariantes.length > 0) { widgetEl.inneTHTML = aniversariantes.map(p => ` <div class="flex items-center space-x-3"> <img src="${p.foto}" alt="${p.nome}" class="w-10 h-10 rounded-full"> <div> <p class="font-semibold">${p.nome}</p> <p class="text-sm text-gray-500">${p.cargo}</p> </div> </div> `).join(''); } else { widgetEl.inneTHTML = `<p class="text-sm text-gray-500">Nenhum aniversariante hoje.</p>`; } }
-        function renderEventsWidget() { const widgetEl = document.getElementById('events-widget'); widgetEl.inneTHTML = eventos.map(e => ` <div class="flex items-center"> <div class="bg-indigo-100 text-indigo-700 font-bold text-sm rounded-md p-2 mr-3 text-center w-16"> ${e.data} </div> <p class="font-medium text-sm">${e.nome}</p> </div> `).join(''); }
-        function renderWhoIsWhoWidget() { const widgetEl = document.getElementById('who-is-who-widget'); const pessoa = colaboradores[Math.floor(Math.random() * colaboradores.length)]; widgetEl.inneTHTML = ` <img src="${pessoa.foto}" alt="${pessoa.nome}" class="w-20 h-20 rounded-full mx-auto mb-3"> <p class="font-bold">${pessoa.nome}</p> <p class="text-sm text-gray-600">${pessoa.cargo}</p> `; }
+        function renderPaymentCalendar() { const paymentCalendarEl = document.getElementById('payment-calendar'); const hoje = new Date(); const ano = hoje.getFullYear(); const mes = hoje.getMonth(); let dataAdiantamento = new Date(ano, mes, 15); let dataPagamento = new Date(ano, mes, 30); paymentCalendarEl.innerHTML = ` <div class="p-3 bg-blue-50 rounded-lg"> <p class="font-semibold text-blue-800">Adiantamento (${hoje.toLocaleString('pt-BR', { month: 'long' })})</p> <p class="text-sm text-blue-600">${dataAdiantamento.toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit'})} (${dataAdiantamento.toLocaleDateString('pt-BR', {weekday: 'short'})})</p> </div> <div class="p-3 bg-green-50 rounded-lg"> <p class="font-semibold text-green-800">Pagamento Mensal</p> <p class="text-sm text-green-600">${dataPagamento.toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit'})} (${dataPagamento.toLocaleDateString('pt-BR', {weekday: 'short'})})</p> </div> `; }
+        function renderBirthdayWidget() { const widgetEl = document.getElementById('birthday-widget'); const hoje = new Date(); const hojeStr = `${hoje.getMonth() + 1}-${hoje.getDate()}`; const aniversariantes = colaboradores.filter(c => c.aniversario === hojeStr); if (aniversariantes.length > 0) { widgetEl.innerHTML = aniversariantes.map(p => ` <div class="flex items-center space-x-3"> <img src="${p.foto}" alt="${p.nome}" class="w-10 h-10 rounded-full"> <div> <p class="font-semibold">${p.nome}</p> <p class="text-sm text-gray-500">${p.cargo}</p> </div> </div> `).join(''); } else { widgetEl.innerHTML = `<p class="text-sm text-gray-500">Nenhum aniversariante hoje.</p>`; } }
+        function renderEventsWidget() { const widgetEl = document.getElementById('events-widget'); widgetEl.innerHTML = eventos.map(e => ` <div class="flex items-center"> <div class="bg-indigo-100 text-indigo-700 font-bold text-sm rounded-md p-2 mr-3 text-center w-16"> ${e.data} </div> <p class="font-medium text-sm">${e.nome}</p> </div> `).join(''); }
+        function renderWhoIsWhoWidget() { const widgetEl = document.getElementById('who-is-who-widget'); const pessoa = colaboradores[Math.floor(Math.random() * colaboradores.length)]; widgetEl.innerHTML = ` <img src="${pessoa.foto}" alt="${pessoa.nome}" class="w-20 h-20 rounded-full mx-auto mb-3"> <p class="font-bold">${pessoa.nome}</p> <p class="text-sm text-gray-600">${pessoa.cargo}</p> `; }
         
         // --- LÓGICA DOS MODAIS ---
         
@@ -495,13 +495,13 @@
                     if(newsItem.imageUrl) {
                         contentHTML = `<img src="${newsItem.imageUrl}" alt="${newsItem.title}" class="w-full h-auto max-h-96 object-cover rounded-lg mb-6">${contentHTML}`;
                     }
-                    document.getElementById('news-detail-content').inneTHTML = contentHTML;
+                    document.getElementById('news-detail-content').innerHTML = contentHTML;
                     openModal('news-detail-modal');
                 } else if (action === 'edit') {
                     document.getElementById('news-modal-title').textContent = 'Editar Notícia';
                     document.getElementById('news-id').value = id;
                     document.getElementById('news-title').value = newsItem.title;
-                    document.getElementById('news-content-editor').inneTHTML = newsItem.content;
+                    document.getElementById('news-content-editor').innerHTML = newsItem.content;
                     document.getElementById('news-image-text').value = newsItem.imageText || '';
                     document.getElementById('news-image-bg').value = newsItem.imageBg || '#3B82F6';
                     document.getElementById('news-image-fg').value = newsItem.imageFg || '#FFFFFF';
@@ -517,14 +517,14 @@
 
             // --- Ações no painel de admin ---
             document.getElementById('admin-panel-modal').addEventListener('click', (e) => {
-                const button = e.target.closest('[data-action="delete-TH-user"]');
+                const button = e.target.closest('[data-action="delete-rh-user"]');
                 if (!button) return;
                 const id = button.dataset.id;
-                const userToDelete = state.allTHUsers.find(u => u.id === id);
+                const userToDelete = state.allRhUsers.find(u => u.id === id);
                 if (userToDelete) {
                     showConfirmModal('Confirmar Exclusão', `Tem certeza que deseja remover o usuário ${userToDelete.username}?`, () => {
-                        state.allTHUsers = state.allTHUsers.filter(u => u.id !== id);
-                        renderTHUsers(state.allTHUsers);
+                        state.allRhUsers = state.allRhUsers.filter(u => u.id !== id);
+                        renderRhUsers(state.allRhUsers);
                     });
                 }
             });
@@ -535,7 +535,7 @@
             document.getElementById('logout-button').addEventListener('click', () => setUserState(null));
             document.getElementById('new-post-button').addEventListener('click', () => {
                 document.getElementById('news-form').reset();
-                document.getElementById('news-content-editor').inneTHTML = '';
+                document.getElementById('news-content-editor').innerHTML = '';
                 document.getElementById('news-id').value = '';
                 document.getElementById('news-modal-title').textContent = 'Criar Nova Notícia';
                 openModal('news-modal');
@@ -566,9 +566,9 @@
                     return;
                 }
 
-                const THUser = state.allTHUsers.find(u => u.username === username && u.password === password);
-                if (THUser) {
-                    setUserState(THUser);
+                const rhUser = state.allRhUsers.find(u => u.username === username && u.password === password);
+                if (rhUser) {
+                    setUserState(rhUser);
                     closeModal('login-modal');
                     e.target.reset();
                     errorEl.textContent = '';
@@ -588,7 +588,7 @@
                 
                 const newsData = {
                     title: document.getElementById('news-title').value,
-                    content: document.getElementById('news-content-editor').inneTHTML,
+                    content: document.getElementById('news-content-editor').innerHTML,
                     imageUrl: imageText ? `https://placehold.co/800x400/${imageBg}/${imageFg}?text=${encodeURIComponent(imageText)}` : '',
                     imageText: imageText,
                     imageBg: `#${imageBg}`,
@@ -610,24 +610,24 @@
                 closeModal('news-modal');
             });
 
-            document.getElementById('add-TH-user-form').addEventListener('submit', (e) => {
+            document.getElementById('add-rh-user-form').addEventListener('submit', (e) => {
                 e.preventDefault();
-                const THUsername = document.getElementById('TH-username').value;
-                const THPassword = document.getElementById('TH-password').value;
+                const rhUsername = document.getElementById('rh-username').value;
+                const rhPassword = document.getElementById('rh-password').value;
                 const errorEl = document.getElementById('admin-error');
-                if (state.allTHUsers.find(u => u.username === THUsername)) {
+                if (state.allRhUsers.find(u => u.username === rhUsername)) {
                     errorEl.textContent = 'Este usuário já existe.';
                     return;
                 }
                 const newUser = {
                     id: Date.now().toString(),
-                    username: THUsername,
-                    password: THPassword, // Salva a senha para o login simulado
-                    email: `${THUsername}@neoortho.com.br`,
-                    role: 'TH'
+                    username: rhUsername,
+                    password: rhPassword, // Salva a senha para o login simulado
+                    email: `${rhUsername}@neoortho.com.br`,
+                    role: 'rh'
                 };
-                state.allTHUsers.push(newUser);
-                renderTHUsers(state.allTHUsers);
+                state.allRhUsers.push(newUser);
+                renderRhUsers(state.allRhUsers);
                 e.target.reset();
                 errorEl.textContent = '';
             });
@@ -653,7 +653,7 @@
             renderEventsWidget();
             renderWhoIsWhoWidget();
             renderNews(state.allNews);
-            renderTHUsers(state.allTHUsers);
+            renderRhUsers(state.allRhUsers);
             updateUIForAuthState();
         }
 
